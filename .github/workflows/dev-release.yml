@@ -7,7 +7,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        target: [RE2, RE2_TDB66, RE3, RE3_TDB67, RE4, RE7, RE7_TDB49, RE8, DMC5, MHRISE, SF6]
+        target: [SF6]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -47,7 +47,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         uses: softprops/action-gh-release@v0.1.13
         with:
-          repository: praydog/REFramework-nightly
+          repository: agersant/REFramework-nightly
           token: ${{secrets.REPO_TOKEN}}
           name: ${{format('v1.{0}-{1}', github.run_number, steps.vars.outputs.SHA_SHORT)}}
           tag_name: latest

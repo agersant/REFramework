@@ -192,39 +192,7 @@ void set_network_game_mode(EGameMode mode) {
     }
 }
 
-bool is_online_match() {
-    const auto network_game_mode = get_network_game_mode();
-
-    if (network_game_mode.has_value()) {
-        switch ((EGameMode)**network_game_mode) {
-            case EGameMode::RANKED_MATCH:
-            case EGameMode::PLAYER_MATCH:
-            case EGameMode::CABINET_MATCH:
-            case EGameMode::CUSTOM_ROOM_MATCH:
-            case EGameMode::ONLINE_TRAINING:
-                return true;
-
-            default:
-                break;
-        }
-    }
-
-    const auto game_mode = get_game_mode();
-
-    if (game_mode.has_value()) {
-        switch ((EGameMode)**game_mode) {
-            case EGameMode::RANKED_MATCH:
-            case EGameMode::PLAYER_MATCH:
-            case EGameMode::CABINET_MATCH:
-            case EGameMode::CUSTOM_ROOM_MATCH:
-            case EGameMode::ONLINE_TRAINING:
-                return true;
-
-            default:
-                break;
-        }
-    }
-
+bool is_online_match() {  
     return false;
 }
 }
